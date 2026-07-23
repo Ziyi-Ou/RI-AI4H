@@ -4,23 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RI ScreenConnect</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e8f6f2'/%3E%3Cpath d='M18 35c7-15 21-15 28 0' fill='none' stroke='%230f766e' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='28' r='6' fill='%23f6c945'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="assets/ri-screenconnect-icon-clean.png">
   <style>
     :root {
-      --bg: #f6f8f7;
+      --bg: #f3f7f8;
       --surface: #ffffff;
-      --soft: #eef7f4;
-      --ink: #13232f;
-      --muted: #60717d;
-      --line: #d8e3df;
-      --primary: #123f46;
-      --teal: #0f766e;
-      --teal-soft: #dff2ee;
+      --soft: #e9f6f7;
+      --ink: #08213f;
+      --muted: #5f7284;
+      --line: #d5e1e8;
+      --primary: #032a56;
+      --primary-2: #074170;
+      --teal: #0f919e;
+      --teal-dark: #0c818d;
+      --teal-soft: #dff5f7;
+      --coral: #ff6157;
+      --coral-dark: #d7473f;
       --gold: #f6c945;
-      --red: #d94b3d;
-      --blue: #246b8f;
-      --shadow: 0 18px 42px rgba(19, 35, 47, 0.10);
-      --shadow-soft: 0 8px 22px rgba(19, 35, 47, 0.07);
+      --green: #26a978;
+      --blue: #058dc7;
+      --shadow: 0 22px 54px rgba(3, 42, 86, 0.14);
+      --shadow-soft: 0 10px 26px rgba(3, 42, 86, 0.08);
       --radius-lg: 22px;
       --radius-md: 14px;
       --radius-sm: 10px;
@@ -34,9 +38,9 @@
       min-height: 100vh;
       overflow-y: auto;
       background:
-        radial-gradient(circle at 12% 8%, rgba(15, 118, 110, 0.12), transparent 30%),
-        radial-gradient(circle at 88% 18%, rgba(246, 201, 69, 0.18), transparent 26%),
-        linear-gradient(180deg, #fbfdfc 0%, var(--bg) 46%, #fff 100%);
+        radial-gradient(circle at 15% 10%, rgba(15, 145, 158, 0.16), transparent 30%),
+        radial-gradient(circle at 86% 12%, rgba(255, 97, 87, 0.13), transparent 27%),
+        linear-gradient(180deg, #fbfdff 0%, var(--bg) 46%, #ffffff 100%);
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -52,7 +56,7 @@
       top: 0;
       z-index: 30;
       border-bottom: 1px solid rgba(216, 227, 223, 0.86);
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.90);
       backdrop-filter: blur(16px);
       box-shadow: 0 1px 18px rgba(19, 35, 47, 0.04);
     }
@@ -78,16 +82,25 @@
       font-size: 20px;
     }
 
+    .brand-mark,
+    .brand-mark img {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: block;
+    }
+
     .brand-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: var(--soft);
-      color: var(--teal);
-      box-shadow: inset 0 0 0 1px #cfe7e1;
-      font-weight: 950;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(3, 42, 86, 0.10);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .brand-wordmark {
+      display: block;
+      height: 22px;
+      width: auto;
     }
 
     .nav-links {
@@ -114,15 +127,15 @@
 
     .nav-link:hover, .nav-link[aria-current="page"] {
       color: var(--primary);
-      background: var(--soft);
-      border-color: #cfe7e1;
+      background: rgba(15, 145, 158, 0.10);
+      border-color: #cde8ed;
     }
 
     .nav-link.cta {
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--teal-dark));
       color: #fff;
-      border-color: var(--primary);
-      box-shadow: 0 8px 18px rgba(18, 63, 70, 0.16);
+      border-color: rgba(3, 42, 86, 0.18);
+      box-shadow: 0 10px 22px rgba(3, 42, 86, 0.18);
     }
 
     .view { display: none; }
@@ -160,6 +173,29 @@
       max-width: 850px;
     }
 
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding: 10px 14px 10px 10px;
+      border: 1px solid rgba(15, 145, 158, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 8px 22px rgba(3, 42, 86, 0.06);
+    }
+
+    .brand-lockup img:first-child {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+    }
+
+    .brand-lockup img:last-child {
+      height: 21px;
+      width: auto;
+    }
+
     h2 {
       margin-bottom: 10px;
       font-size: clamp(28px, 3.8vw, 44px);
@@ -191,10 +227,10 @@
     }
 
     .hero-points li {
-      border: 1px solid #cfe7e1;
+      border: 1px solid #cde8ed;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      color: #31515a;
+      background: rgba(255, 255, 255, 0.76);
+      color: #24485d;
       padding: 8px 11px;
       font-size: 13px;
       font-weight: 820;
@@ -218,9 +254,9 @@
 
     .button:hover { transform: translateY(-1px); }
     .button.primary {
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--teal-dark));
       color: #fff;
-      box-shadow: 0 12px 24px rgba(18, 63, 70, 0.22);
+      box-shadow: 0 14px 28px rgba(3, 42, 86, 0.24);
     }
 
     .button.secondary {
@@ -231,9 +267,11 @@
     }
 
     .hero-visual {
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background: linear-gradient(160deg, #ffffff, #edf7f4);
+      border: 1px solid rgba(213, 225, 232, 0.95);
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.94), rgba(242,248,250,0.96)),
+        #fff;
       box-shadow: var(--shadow);
       padding: 24px;
       min-height: 520px;
@@ -247,11 +285,11 @@
     .hero-visual::before {
       content: "";
       position: absolute;
-      inset: 30px 20px auto auto;
+      inset: 24px 16px auto auto;
       width: 170px;
       height: 170px;
       border-radius: 999px;
-      background: rgba(246, 201, 69, 0.18);
+      background: rgba(15, 145, 158, 0.14);
     }
 
     .hero-visual::after {
@@ -261,7 +299,115 @@
       width: 210px;
       height: 210px;
       border-radius: 999px;
-      background: rgba(15, 118, 110, 0.13);
+      background: rgba(255, 97, 87, 0.12);
+    }
+
+    .product-console {
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(213, 225, 232, 0.95);
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow: 0 16px 38px rgba(3, 42, 86, 0.10);
+      overflow: hidden;
+    }
+
+    .console-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid #e5eef2;
+      background: linear-gradient(90deg, #f7fbfc, #fff);
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .console-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .console-status::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(38, 169, 120, 0.12);
+    }
+
+    .console-body {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 16px;
+      padding: 16px;
+      align-items: stretch;
+    }
+
+    .map-tile {
+      min-height: 205px;
+      border: 1px solid #e2edf0;
+      border-radius: 18px;
+      padding: 12px;
+      background: #f8fcfd;
+      display: grid;
+      gap: 8px;
+      align-content: center;
+    }
+
+    .map-row {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr 1.1fr;
+      gap: 7px;
+    }
+
+    .mini-cell {
+      height: 28px;
+      border-radius: 9px;
+      background: #ccead4;
+      border: 1px solid rgba(3, 42, 86, 0.05);
+    }
+
+    .mini-cell.hot { background: #fdae61; }
+    .mini-cell.warn { background: #fee08b; }
+    .mini-cell.deep { background: #d7473f; }
+    .mini-cell.cool { background: #91cf60; }
+
+    .appointment-preview {
+      display: grid;
+      gap: 10px;
+    }
+
+    .preview-card {
+      border: 1px solid #e2edf0;
+      border-radius: 16px;
+      padding: 13px;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(3, 42, 86, 0.05);
+    }
+
+    .preview-card strong {
+      display: block;
+      color: var(--primary);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .preview-card span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .preview-card.accent {
+      border-color: rgba(15, 145, 158, 0.32);
+      background: linear-gradient(135deg, #f3fbfc, #ffffff);
     }
 
     .workflow-card {
@@ -315,24 +461,6 @@
       gap: 9px;
     }
 
-    .mini-map-row {
-      display: grid;
-      grid-template-columns: 1fr 0.8fr 1.2fr;
-      gap: 8px;
-    }
-
-    .mini-cell {
-      height: 30px;
-      border-radius: 9px;
-      background: #cfeec8;
-      border: 1px solid rgba(19, 35, 47, 0.05);
-    }
-
-    .mini-cell.hot { background: #f6b26b; }
-    .mini-cell.warn { background: #fee08b; }
-    .mini-cell.deep { background: #d94b3d; }
-    .mini-cell.cool { background: #91cf60; }
-
     .quick-strip {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -351,7 +479,7 @@
     .quick-stat strong {
       display: block;
       color: var(--primary);
-      font-size: 18px;
+      font-size: 20px;
       line-height: 1.1;
     }
 
@@ -375,9 +503,11 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(213, 225, 232, 0.98);
       border-radius: var(--radius-lg);
-      background: var(--surface);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,252,253,0.98)),
+        var(--surface);
       padding: 24px;
       box-shadow: var(--shadow-soft);
       text-decoration: none;
@@ -390,16 +520,18 @@
       content: "";
       position: absolute;
       inset: auto 18px 18px auto;
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      background: var(--soft);
-      opacity: 0.78;
+      width: 64px;
+      height: 64px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 38% 38%, rgba(255,255,255,0.65), transparent 32%),
+        linear-gradient(135deg, rgba(15,145,158,0.18), rgba(3,42,86,0.08));
+      opacity: 0.92;
     }
 
     .role-card:hover {
       transform: translateY(-4px);
-      border-color: #b8d9d2;
+      border-color: rgba(15, 145, 158, 0.34);
       box-shadow: var(--shadow);
     }
 
@@ -408,8 +540,8 @@
       z-index: 1;
       width: max-content;
       border-radius: 999px;
-      background: var(--soft);
-      color: var(--teal);
+      background: var(--teal-soft);
+      color: var(--teal-dark);
       padding: 6px 10px;
       font-size: 12px;
       font-weight: 900;
@@ -426,8 +558,16 @@
     .role-card.health { grid-column: 1 / -1; min-height: 190px; }
     .role-card.health {
       background:
-        linear-gradient(90deg, rgba(223, 242, 238, 0.90), rgba(255, 255, 255, 0.96)),
+        linear-gradient(90deg, rgba(223, 245, 247, 0.96), rgba(255, 255, 255, 0.98)),
         #fff;
+    }
+
+    .role-card.patient::after {
+      background: linear-gradient(135deg, rgba(255,97,87,0.20), rgba(15,145,158,0.14));
+    }
+
+    .role-card.provider::after {
+      background: linear-gradient(135deg, rgba(246,201,69,0.26), rgba(3,42,86,0.10));
     }
 
     .role-card h3,
@@ -460,8 +600,8 @@
       display: inline-flex;
       width: max-content;
       border-radius: 999px;
-      background: var(--soft);
-      color: var(--teal);
+      background: var(--teal-soft);
+      color: var(--teal-dark);
       padding: 7px 11px;
       font-size: 13px;
       font-weight: 900;
@@ -479,10 +619,10 @@
     }
 
     .notice {
-      border: 1px solid #cfe7e1;
+      border: 1px solid #cde8ed;
       border-radius: var(--radius-md);
-      background: #f6fbf9;
-      color: #31515a;
+      background: #f6fbfc;
+      color: #315267;
       padding: 13px 15px;
       font-size: 14px;
       margin-bottom: 16px;
@@ -505,8 +645,8 @@
 
     .panel.search-panel {
       background:
-        linear-gradient(180deg, #ffffff, #fbfdfc);
-      border-color: #cfe1dd;
+        linear-gradient(180deg, #ffffff, #f7fbfc);
+      border-color: #cde8ed;
     }
 
     .form-grid {
@@ -525,7 +665,7 @@
 
     input, select {
       min-height: 46px;
-      border: 1px solid #cbd9d5;
+      border: 1px solid #cbdde4;
       border-radius: 12px;
       background: #fff;
       color: var(--ink);
@@ -571,8 +711,8 @@
 
     .result-count {
       border-radius: 999px;
-      background: var(--soft);
-      color: var(--teal);
+      background: var(--teal-soft);
+      color: var(--teal-dark);
       padding: 7px 11px;
       font-size: 13px;
       font-weight: 900;
@@ -595,16 +735,16 @@
     }
 
     .appointment-card.best {
-      border-color: #edcf5d;
-      background: linear-gradient(180deg, #fffdf1, #fff);
+      border-color: rgba(15, 145, 158, 0.34);
+      background: linear-gradient(180deg, #f5fbfc, #fff);
     }
 
     .badge {
       display: inline-flex;
       border-radius: 999px;
       padding: 5px 9px;
-      background: #fff2bc;
-      color: #6d5600;
+      background: rgba(255, 97, 87, 0.12);
+      color: var(--coral-dark);
       font-size: 12px;
       font-weight: 900;
       margin-bottom: 8px;
@@ -621,10 +761,10 @@
 
     .slots { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .slot {
-      border: 1px solid #e0bd3c;
+      border: 1px solid rgba(3, 42, 86, 0.12);
       border-radius: 12px;
-      background: var(--gold);
-      color: #2f2700;
+      background: linear-gradient(135deg, var(--primary), var(--teal-dark));
+      color: #fff;
       min-height: 42px;
       padding: 0 12px;
       font-weight: 900;
@@ -644,7 +784,7 @@
 
     .footer {
       border-top: 1px solid var(--line);
-      background: #fff;
+      background: rgba(255,255,255,0.94);
       padding: 22px;
       color: var(--muted);
       font-size: 13px;
@@ -685,6 +825,7 @@
     @media (max-width: 900px) {
       .hero, .navigator-shell, .part-header { grid-template-columns: 1fr; }
       .hero { min-height: auto; }
+      .console-body { grid-template-columns: 1fr; }
       .role-grid, .quick-strip { grid-template-columns: 1fr; }
       .role-card.health { grid-column: auto; }
       .dashboard-frame { height: 78vh; min-height: 640px; }
@@ -708,7 +849,10 @@
   <div class="shell">
     <header class="topbar">
       <nav class="nav" aria-label="Primary navigation">
-        <a class="brand" href="#home" data-nav="home"><span class="brand-mark">RI</span><span>RI ScreenConnect</span></a>
+        <a class="brand" href="#home" data-nav="home" aria-label="RI ScreenConnect home">
+          <span class="brand-mark"><img src="assets/ri-screenconnect-icon-clean.png" alt=""></span>
+          <img class="brand-wordmark" src="assets/ri-screenconnect-title.png" alt="RI ScreenConnect">
+        </a>
         <div class="nav-links">
           <a class="nav-link" href="#organization" data-nav="organization">Community Needs</a>
           <a class="nav-link cta" href="#navigator" data-nav="navigator">Find Screening</a>
@@ -722,7 +866,10 @@
         <div class="container">
           <div class="hero">
             <div>
-              <p class="eyebrow">RI ScreenConnect</p>
+              <div class="brand-lockup" aria-label="RI ScreenConnect">
+                <img src="assets/ri-screenconnect-icon-clean.png" alt="">
+                <img src="assets/ri-screenconnect-title.png" alt="RI ScreenConnect">
+              </div>
               <h1>From screening insight to easier access to care.</h1>
               <p class="lede">A Rhode Island screening-support tool for planning outreach and helping patients find convenient screening appointments after a clinician recommendation.</p>
               <ul class="hero-points" aria-label="What RI ScreenConnect supports">
@@ -736,26 +883,38 @@
               </div>
             </div>
             <div class="hero-visual" aria-label="Screening support workflow">
-              <div class="mini-map" aria-hidden="true">
-                <div class="mini-map-row"><span class="mini-cell cool"></span><span class="mini-cell warn"></span><span class="mini-cell hot"></span></div>
-                <div class="mini-map-row"><span class="mini-cell warn"></span><span class="mini-cell deep"></span><span class="mini-cell cool"></span></div>
-                <div class="mini-map-row"><span class="mini-cell cool"></span><span class="mini-cell hot"></span><span class="mini-cell warn"></span></div>
+              <div class="product-console">
+                <div class="console-top">
+                  <span>Screening access workspace</span>
+                  <span class="console-status">Ready to explore</span>
+                </div>
+                <div class="console-body">
+                  <div class="map-tile" aria-hidden="true">
+                    <div class="map-row"><span class="mini-cell cool"></span><span class="mini-cell warn"></span><span class="mini-cell hot"></span></div>
+                    <div class="map-row"><span class="mini-cell warn"></span><span class="mini-cell deep"></span><span class="mini-cell cool"></span></div>
+                    <div class="map-row"><span class="mini-cell cool"></span><span class="mini-cell hot"></span><span class="mini-cell warn"></span></div>
+                    <div class="map-row"><span class="mini-cell hot"></span><span class="mini-cell cool"></span><span class="mini-cell warn"></span></div>
+                  </div>
+                  <div class="appointment-preview">
+                    <article class="preview-card accent">
+                      <strong>Community needs surfaced</strong>
+                      <span>Gap, SVI, HEZ, and flu-shot context in one planning dashboard</span>
+                    </article>
+                    <article class="preview-card">
+                      <strong>Convenient options ranked</strong>
+                      <span>Facility availability filtered by date, distance, language, insurance, and access needs</span>
+                    </article>
+                    <article class="preview-card">
+                      <strong>Patients stay in control</strong>
+                      <span>Final booking and personal information stay with the selected facility</span>
+                    </article>
+                  </div>
+                </div>
               </div>
-              <article class="workflow-card">
-                <small>Population planning</small>
-                <strong>Explore community needs</strong>
-                <p>Population-health teams explore community-level screening gaps and context.</p>
-              </article>
-              <div class="connector" aria-hidden="true"></div>
-              <article class="workflow-card">
-                <small>Patient access</small>
-                <strong>Find screening</strong>
-                <p>Patients and care teams compare available screening options by location, schedule, language, insurance, and access needs.</p>
-              </article>
               <div class="quick-strip" aria-hidden="true">
-                <div class="quick-stat"><strong>ZIP</strong><span>Location</span></div>
-                <div class="quick-stat"><strong>2:00 PM</strong><span>Time</span></div>
-                <div class="quick-stat"><strong>10 mi</strong><span>Distance</span></div>
+                <div class="quick-stat"><strong>121k</strong><span>Eligible rows</span></div>
+                <div class="quick-stat"><strong>5</strong><span>Cancer types</span></div>
+                <div class="quick-stat"><strong>RI</strong><span>Local focus</span></div>
               </div>
             </div>
           </div>
@@ -776,7 +935,7 @@
                 </div>
                 <span class="button secondary">Open dashboard</span>
               </a>
-              <a class="role-card" href="#navigator">
+              <a class="role-card patient" href="#navigator">
                 <span class="tag">Patient or caregiver</span>
                 <div>
                   <h3>Find Screening</h3>
@@ -784,7 +943,7 @@
                 </div>
                 <span class="button secondary">Search appointments</span>
               </a>
-              <a class="role-card" href="#navigator">
+              <a class="role-card provider" href="#navigator">
                 <span class="tag">Care team</span>
                 <div>
                   <h3>Support a Patient</h3>

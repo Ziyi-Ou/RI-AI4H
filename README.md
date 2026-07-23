@@ -2,97 +2,59 @@
 
 **Live application:** https://ziyi-ou.github.io/RI-AI4H/
 
-RI ScreenConnect is a static GitHub Pages prototype for the Rhode Island AI4H Data Challenge. It connects two parts of the cancer-screening journey:
+RI ScreenConnect is a static GitHub Pages product prototype for the Rhode Island AI4H Data Challenge.
 
-1. helping health organizations explore where screening outreach may be most needed; and
-2. helping patients or care teams find convenient screening options after screening has already been recommended.
+It connects two practical pieces of the cancer-screening journey:
 
-The appointment-search experience currently uses **mammography as the example screening type**, but the product concept is designed as a broader screening navigator.
+1. helping organizations understand where screening outreach may have the greatest local impact; and
+2. helping patients or care teams compare convenient screening options after screening has already been recommended.
 
----
+The appointment-search experience uses simulated facility availability. Mammography is included as the main example, but the interface is framed as a broader screening navigator.
 
 ## Designated Users
 
 ### Health Organizations
 
-Intended users include health systems, public-health agencies, community organizations, cancer-prevention initiatives, and outreach teams.
-
-These users can open the **Community Needs** dashboard to:
+Health systems, public-health agencies, community organizations, cancer-prevention initiatives, and outreach teams can use the **Community Needs** dashboard to:
 
 - compare screening-gap patterns across Rhode Island cities and ZIP Code areas;
-- review city-level and ZIP-level screening-gap views;
-- examine social vulnerability and Health Equity Zone context;
+- examine SVI and Health Equity Zone context;
 - compare screening gaps with flu-shot uptake as a preventive-care touchpoint;
 - identify communities where awareness, navigation, or outreach resources may have greater impact.
-
-The dashboard uses aggregated SyntheticRI outputs and is intended for planning, not patient identification.
 
 ### Patients and Caregivers
 
 Patients or caregivers can use **Find Screening** after a clinician has already recommended screening.
 
-The navigator helps users compare sample appointment options by:
-
-- screening type;
-- ZIP code;
-- preferred date;
-- preferred time;
-- insurance category;
-- travel distance;
-- language preference;
-- accessibility needs;
-- referral status.
-
-The tool does not determine whether screening is medically appropriate.
+The navigator helps compare sample appointment options by screening type, ZIP code, date, time, insurance category, travel distance, language preference, accessibility needs, and referral status.
 
 ### Providers and Care Teams
 
-Providers, care coordinators, navigators, and clinic staff can use the same **Find Screening** flow to help a patient compare options.
+Providers, care coordinators, navigators, and clinic staff can use the same **Find Screening** workflow to help a patient compare practical appointment options.
 
-The workflow is designed to support a practical conversation about convenience, access needs, and next steps. It does not send referrals, verify coverage, or book appointments in the static prototype.
-
----
-
-## Current Website Structure
-
-- **Home:** RI ScreenConnect product landing page.
-- **Community Needs:** embedded population-health cancer screening gap dashboard.
-- **Find Screening:** screening appointment navigator with mammography as the example search.
-- **Partners:** concise value proposition for health systems, screening facilities, public-health organizations, and payers.
-
----
+The static prototype does not send referrals, verify coverage, or complete real bookings.
 
 ## Data Boundary
 
 This prototype uses **SyntheticRI**, which contains synthetic, not real, patient records.
 
-The Community Needs dashboard shows population-level distributions and cannot identify or contact actual residents. Displayed values should not be interpreted as verified Rhode Island screening rates.
+The Community Needs dashboard shows population-level planning outputs and cannot identify or contact actual residents. Displayed values should not be interpreted as verified Rhode Island screening rates.
 
-The Find Screening flow uses sample appointment availability. It does not collect personal health information and does not complete real booking. In a deployed version, final scheduling and personal information would be handled directly by the selected participating facility.
+The Find Screening flow uses simulated appointment availability and does not collect personal health information. In a deployed version, final scheduling and personal information would be handled directly by the selected participating facility.
 
----
+## Website Structure
 
-## Analytical Dashboard Views
+- **Home:** RI ScreenConnect product landing page.
+- **Community Needs:** embedded population-health cancer screening gap dashboard.
+- **Find Screening:** appointment navigator using simulated facility availability.
+- **Partners:** concise partner value proposition.
 
-The embedded Community Needs dashboard includes:
+## Main Files
 
-- **City Heatmap:** compare eligible count, gap count, and gap rate across cities.
-- **Individual Distribution:** visualize sampled synthetic missed-screening records.
-- **Priority Overlay:** combine screening-gap patterns with Social Vulnerability Index and Health Equity Zone context.
-- **Compare With Flu Shot:** compare cancer-screening gaps with flu-shot uptake as a preventive-care touchpoint.
+- `index.html` — product landing page, routing, and appointment navigator.
+- `RI_cancer_screening_dashboard_300k.html` — self-contained SyntheticRI 300K population-health dashboard.
+- `assets/ri-screenconnect-icon-clean.png` — product icon and favicon.
+- `assets/ri-screenconnect-title.png` — RI ScreenConnect wordmark.
+- `README.md` — project documentation.
 
-The dashboard currently includes colorectal, breast, cervical, and lung cancer screening analyses.
-
----
-
-## Implementation
-
-The site is implemented as static HTML, CSS, and JavaScript for GitHub Pages.
-
-Main files:
-
-- `index.html` — RI ScreenConnect landing page and Find Screening navigator.
-- `RI_cancer_screening_dashboard_300k.html` — self-contained embedded population-health dashboard generated from the SyntheticRI 300K analysis workflow.
-- `README.md` — project and user documentation.
-
-No server, database, authentication system, or live scheduling integration is required for the current static prototype.
+No server, database, authentication system, or live scheduling integration is required for the current static GitHub Pages prototype.
