@@ -74,7 +74,7 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       font-weight: 900;
       letter-spacing: -0.01em;
@@ -84,17 +84,32 @@
 
     .brand-mark,
     .brand-mark img {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
       display: block;
     }
 
     .brand-mark {
-      background: #fff;
-      box-shadow: 0 8px 20px rgba(3, 42, 86, 0.10);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.98), rgba(233,246,247,0.95));
+      border: 1px solid rgba(15, 145, 158, 0.16);
+      box-shadow: 0 10px 24px rgba(3, 42, 86, 0.12);
       overflow: hidden;
       flex: 0 0 auto;
+    }
+
+    .brand-system {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-system::after {
+      content: "";
+      width: 1px;
+      height: 26px;
+      background: linear-gradient(180deg, transparent, #cde8ed, transparent);
     }
 
     .brand-wordmark {
@@ -176,19 +191,19 @@
     .brand-lockup {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 18px;
-      padding: 10px 14px 10px 10px;
+      padding: 11px 18px 11px 11px;
       border: 1px solid rgba(15, 145, 158, 0.18);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.78);
-      box-shadow: 0 8px 22px rgba(3, 42, 86, 0.06);
+      box-shadow: 0 12px 28px rgba(3, 42, 86, 0.08);
     }
 
     .brand-lockup img:first-child {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
     }
 
     .brand-lockup img:last-child {
@@ -312,6 +327,61 @@
       overflow: hidden;
     }
 
+    .concept-icon {
+      width: 76px;
+      height: 76px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid rgba(213, 225, 232, 0.95);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 74% 22%, rgba(15,145,158,0.13), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,251,252,0.98));
+      box-shadow: 0 10px 26px rgba(3, 42, 86, 0.08);
+      color: var(--primary);
+      flex: 0 0 auto;
+    }
+
+    .concept-icon svg {
+      width: 50px;
+      height: 50px;
+      display: block;
+    }
+
+    .concept-icon .stroke-navy { stroke: var(--primary); }
+    .concept-icon .stroke-teal { stroke: var(--teal-dark); }
+    .concept-icon .stroke-indigo { stroke: #7b8ce3; }
+    .concept-icon .stroke-coral { stroke: var(--coral); }
+    .concept-icon .fill-teal { fill: rgba(15, 145, 158, 0.18); }
+    .concept-icon .fill-indigo { fill: rgba(123, 140, 227, 0.16); }
+    .concept-icon .fill-coral { fill: rgba(255, 97, 87, 0.18); }
+
+    .concept-icon.compact {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      box-shadow: none;
+    }
+
+    .concept-icon.compact svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .concept-icon.inline {
+      width: 24px;
+      height: 24px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .concept-icon.inline svg {
+      width: 22px;
+      height: 22px;
+    }
+
     .console-top {
       display: flex;
       justify-content: space-between;
@@ -390,6 +460,10 @@
       padding: 13px;
       background: #fff;
       box-shadow: 0 6px 16px rgba(3, 42, 86, 0.05);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 11px;
+      align-items: center;
     }
 
     .preview-card strong {
@@ -399,10 +473,14 @@
       margin-bottom: 4px;
     }
 
-    .preview-card span {
+    .preview-copy {
       color: var(--muted);
       font-size: 12px;
       font-weight: 760;
+    }
+
+    .preview-copy strong {
+      display: block;
     }
 
     .preview-card.accent {
@@ -527,6 +605,16 @@
         radial-gradient(circle at 38% 38%, rgba(255,255,255,0.65), transparent 32%),
         linear-gradient(135deg, rgba(15,145,158,0.18), rgba(3,42,86,0.08));
       opacity: 0.92;
+    }
+
+    .role-card-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
     }
 
     .role-card:hover {
@@ -741,6 +829,8 @@
 
     .badge {
       display: inline-flex;
+      align-items: center;
+      gap: 6px;
       border-radius: 999px;
       padding: 5px 9px;
       background: rgba(255, 97, 87, 0.12);
@@ -846,12 +936,54 @@
   </style>
 </head>
 <body>
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <symbol id="icon-community-needs" viewBox="0 0 64 64">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+        <path class="stroke-indigo" d="M13 16c8-4 14 4 22 0 6-3 10-2 16 0v31c-6-2-10-3-16 0-8 4-14-4-22 0V16Z"/>
+        <path class="stroke-indigo" d="M27 14v31M39 16v31"/>
+        <path class="stroke-coral" d="M42 42h4l2-7 4 14 3-7h4"/>
+        <circle class="stroke-coral fill-coral" cx="51" cy="42" r="11"/>
+        <circle class="stroke-teal fill-teal" cx="24" cy="28" r="2"/>
+        <circle class="stroke-teal fill-teal" cx="33" cy="26" r="2"/>
+        <circle class="stroke-navy" cx="43" cy="28" r="2"/>
+        <circle class="stroke-teal fill-teal" cx="22" cy="37" r="2"/>
+        <circle class="stroke-indigo fill-indigo" cx="32" cy="36" r="2"/>
+        <circle class="stroke-teal fill-teal" cx="41" cy="35" r="2"/>
+      </g>
+    </symbol>
+
+    <symbol id="icon-find-screening" viewBox="0 0 64 64">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+        <path class="stroke-navy" d="M23 8c-9 0-16 7-16 16 0 12 16 27 16 27s16-15 16-27c0-9-7-16-16-16Z"/>
+        <circle class="stroke-navy" cx="23" cy="24" r="6"/>
+        <path class="stroke-indigo" d="M34 24h17a5 5 0 0 1 5 5v20a5 5 0 0 1-5 5H28a5 5 0 0 1-5-5v-6"/>
+        <path class="stroke-indigo" d="M34 20v8M48 20v8M24 33h31"/>
+        <path class="stroke-teal" d="m39 46 5 5 9-11"/>
+        <circle class="stroke-teal fill-teal" cx="46" cy="46" r="12"/>
+      </g>
+    </symbol>
+
+    <symbol id="icon-ai-best-match" viewBox="0 0 64 64">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+        <circle class="stroke-teal fill-teal" cx="32" cy="32" r="8"/>
+        <circle class="stroke-navy" cx="14" cy="14" r="6"/>
+        <circle class="stroke-navy" cx="50" cy="14" r="6"/>
+        <circle class="stroke-indigo fill-indigo" cx="14" cy="50" r="6"/>
+        <circle class="stroke-navy" cx="50" cy="50" r="6"/>
+        <path class="stroke-navy" d="M19 18l7 8M45 18l-7 8M19 46l7-8M45 46l-7-8"/>
+        <path class="stroke-indigo" d="M25 32h-6M45 32h-6"/>
+        <path class="stroke-coral" d="M48 28c4-1 6-3 7-7 1 4 3 6 7 7-4 1-6 3-7 7-1-4-3-6-7-7Z"/>
+      </g>
+    </symbol>
+  </svg>
   <div class="shell">
     <header class="topbar">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="#home" data-nav="home" aria-label="RI ScreenConnect home">
-          <span class="brand-mark"><img src="assets/ri-screenconnect-icon-clean.png" alt=""></span>
-          <img class="brand-wordmark" src="assets/ri-screenconnect-title.png" alt="RI ScreenConnect">
+          <span class="brand-system">
+            <span class="brand-mark"><img src="assets/ri-screenconnect-icon-clean.png" alt=""></span>
+            <img class="brand-wordmark" src="assets/ri-screenconnect-title.png" alt="RI ScreenConnect">
+          </span>
         </a>
         <div class="nav-links">
           <a class="nav-link" href="#organization" data-nav="organization">Community Needs</a>
@@ -897,16 +1029,16 @@
                   </div>
                   <div class="appointment-preview">
                     <article class="preview-card accent">
-                      <strong>Community needs surfaced</strong>
-                      <span>Gap, SVI, HEZ, and flu-shot context in one planning dashboard</span>
+                      <span class="concept-icon compact"><svg><use href="#icon-community-needs"></use></svg></span>
+                      <span class="preview-copy"><strong>Community needs surfaced</strong>Gap, SVI, HEZ, and flu-shot context in one planning dashboard</span>
                     </article>
                     <article class="preview-card">
-                      <strong>Convenient options ranked</strong>
-                      <span>Facility availability filtered by date, distance, language, insurance, and access needs</span>
+                      <span class="concept-icon compact"><svg><use href="#icon-ai-best-match"></use></svg></span>
+                      <span class="preview-copy"><strong>Convenient options ranked</strong>Facility availability filtered by date, distance, language, insurance, and access needs</span>
                     </article>
                     <article class="preview-card">
-                      <strong>Patients stay in control</strong>
-                      <span>Final booking and personal information stay with the selected facility</span>
+                      <span class="concept-icon compact"><svg><use href="#icon-find-screening"></use></svg></span>
+                      <span class="preview-copy"><strong>Patients stay in control</strong>Final booking and personal information stay with the selected facility</span>
                     </article>
                   </div>
                 </div>
@@ -928,7 +1060,10 @@
             </div>
             <div class="role-grid">
               <a class="role-card health" href="#organization">
-                <span class="tag">Population health</span>
+                <div class="role-card-top">
+                  <span class="tag">Population health</span>
+                  <span class="concept-icon"><svg><use href="#icon-community-needs"></use></svg></span>
+                </div>
                 <div>
                   <h3>Explore Community Needs</h3>
                   <p>Use the existing Rhode Island screening-gap dashboard to compare geographic need and community context.</p>
@@ -936,7 +1071,10 @@
                 <span class="button secondary">Open dashboard</span>
               </a>
               <a class="role-card patient" href="#navigator">
-                <span class="tag">Patient or caregiver</span>
+                <div class="role-card-top">
+                  <span class="tag">Patient or caregiver</span>
+                  <span class="concept-icon"><svg><use href="#icon-find-screening"></use></svg></span>
+                </div>
                 <div>
                   <h3>Find Screening</h3>
                   <p>Search participating facilities by screening type, ZIP code, preferred time, insurance, language, and accessibility needs.</p>
@@ -944,7 +1082,10 @@
                 <span class="button secondary">Search appointments</span>
               </a>
               <a class="role-card provider" href="#navigator">
-                <span class="tag">Care team</span>
+                <div class="role-card-top">
+                  <span class="tag">Care team</span>
+                  <span class="concept-icon"><svg><use href="#icon-ai-best-match"></use></svg></span>
+                </div>
                 <div>
                   <h3>Support a Patient</h3>
                   <p>Quickly compare patient-friendly appointment options using the same simulated availability data.</p>
@@ -1254,7 +1395,7 @@
       document.getElementById('result-count').textContent = `${matches.length} option${matches.length === 1 ? '' : 's'}`;
       document.getElementById('results').innerHTML = matches.map(({ facility }, index) => `
         <article class="appointment-card ${index === 0 ? 'best' : ''}">
-          ${index === 0 ? '<span class="badge">AI-assisted Best Match</span>' : ''}
+          ${index === 0 ? '<span class="badge"><span class="concept-icon inline"><svg><use href="#icon-ai-best-match"></use></svg></span>AI-assisted Best Match</span>' : ''}
           <h3>${facility.name}</h3>
           <div class="meta">
             <span>${values.screeningType}</span>
