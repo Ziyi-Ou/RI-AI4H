@@ -55,6 +55,7 @@ The Find Screening flow uses simulated appointment availability and does not col
 - `RI_cancer_screening_dashboard_300k.html` — self-contained SyntheticRI 300K population-health dashboard.
 - `assets/ri-screenconnect-icon.png` — official product icon and favicon.
 - `assets/ri-screenconnect-title.png` — RI ScreenConnect wordmark.
+- `assets/icons/ri-screenconnect/` — supporting product icon set used across the interface.
 - `README.md` — project documentation.
 
 No server, database, authentication system, or live scheduling integration is required for the current static GitHub Pages prototype.

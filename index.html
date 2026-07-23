@@ -476,59 +476,75 @@
       color: var(--coral-dark);
     }
 
+    .chip .concept-icon.meta {
+      margin-left: -2px;
+    }
+
     .concept-icon {
-      width: 76px;
-      height: 76px;
+      width: 92px;
+      height: 92px;
       display: inline-grid;
       place-items: center;
       border: 1px solid rgba(213, 225, 232, 0.95);
-      border-radius: 22px;
+      border-radius: 24px;
       background:
         radial-gradient(circle at 74% 22%, rgba(15,145,158,0.13), transparent 28%),
         linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,251,252,0.98));
-      box-shadow: 0 10px 26px rgba(3, 42, 86, 0.08);
-      color: var(--primary);
+      box-shadow: 0 8px 20px rgba(3, 42, 86, 0.06);
       flex: 0 0 auto;
     }
 
-    .concept-icon svg {
-      width: 50px;
-      height: 50px;
+    .concept-icon img {
+      width: 68px;
+      height: 68px;
       display: block;
+      object-fit: contain;
     }
 
-    .concept-icon .stroke-navy { stroke: var(--primary); }
-    .concept-icon .stroke-teal { stroke: var(--teal-dark); }
-    .concept-icon .stroke-indigo { stroke: #7b8ce3; }
-    .concept-icon .stroke-coral { stroke: var(--coral); }
-    .concept-icon .fill-teal { fill: rgba(15, 145, 158, 0.18); }
-    .concept-icon .fill-indigo { fill: rgba(123, 140, 227, 0.16); }
-    .concept-icon .fill-coral { fill: rgba(255, 97, 87, 0.18); }
-
     .concept-icon.compact {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 14px;
       box-shadow: none;
     }
 
-    .concept-icon.compact svg {
-      width: 30px;
-      height: 30px;
+    .concept-icon.compact img {
+      width: 32px;
+      height: 32px;
     }
 
     .concept-icon.inline {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border: 0;
       border-radius: 0;
       background: transparent;
       box-shadow: none;
     }
 
-    .concept-icon.inline svg {
-      width: 22px;
-      height: 22px;
+    .concept-icon.inline img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .concept-icon.meta {
+      width: 20px;
+      height: 20px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .concept-icon.meta img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .icon-pair {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .console-top {
@@ -918,6 +934,38 @@
       gap: 14px;
     }
 
+    .feature-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0 0 16px;
+    }
+
+    .feature-pill {
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow-card);
+      padding: 14px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .feature-pill strong {
+      display: block;
+      color: var(--primary);
+      font-size: 14px;
+    }
+
+    .feature-pill span:last-child {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
     .field { display: grid; gap: 6px; }
     .field.full { grid-column: 1 / -1; }
     label, legend {
@@ -1148,7 +1196,7 @@
         left: 50%;
         transform: translateX(-50%) rotate(135deg);
       }
-      .role-grid, .quick-strip { grid-template-columns: 1fr; }
+      .role-grid, .quick-strip, .feature-strip { grid-template-columns: 1fr; }
       .role-card.health { grid-column: auto; }
       .dashboard-frame { height: 78vh; min-height: 640px; }
     }
@@ -1171,46 +1219,6 @@
   </style>
 </head>
 <body>
-  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
-    <symbol id="icon-community-needs" viewBox="0 0 64 64">
-      <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-        <path class="stroke-indigo" d="M13 16c8-4 14 4 22 0 6-3 10-2 16 0v31c-6-2-10-3-16 0-8 4-14-4-22 0V16Z"/>
-        <path class="stroke-indigo" d="M27 14v31M39 16v31"/>
-        <path class="stroke-coral" d="M42 42h4l2-7 4 14 3-7h4"/>
-        <circle class="stroke-coral fill-coral" cx="51" cy="42" r="11"/>
-        <circle class="stroke-teal fill-teal" cx="24" cy="28" r="2"/>
-        <circle class="stroke-teal fill-teal" cx="33" cy="26" r="2"/>
-        <circle class="stroke-navy" cx="43" cy="28" r="2"/>
-        <circle class="stroke-teal fill-teal" cx="22" cy="37" r="2"/>
-        <circle class="stroke-indigo fill-indigo" cx="32" cy="36" r="2"/>
-        <circle class="stroke-teal fill-teal" cx="41" cy="35" r="2"/>
-      </g>
-    </symbol>
-
-    <symbol id="icon-find-screening" viewBox="0 0 64 64">
-      <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-        <path class="stroke-navy" d="M23 8c-9 0-16 7-16 16 0 12 16 27 16 27s16-15 16-27c0-9-7-16-16-16Z"/>
-        <circle class="stroke-navy" cx="23" cy="24" r="6"/>
-        <path class="stroke-indigo" d="M34 24h17a5 5 0 0 1 5 5v20a5 5 0 0 1-5 5H28a5 5 0 0 1-5-5v-6"/>
-        <path class="stroke-indigo" d="M34 20v8M48 20v8M24 33h31"/>
-        <path class="stroke-teal" d="m39 46 5 5 9-11"/>
-        <circle class="stroke-teal fill-teal" cx="46" cy="46" r="12"/>
-      </g>
-    </symbol>
-
-    <symbol id="icon-ai-best-match" viewBox="0 0 64 64">
-      <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-        <circle class="stroke-teal fill-teal" cx="32" cy="32" r="8"/>
-        <circle class="stroke-navy" cx="14" cy="14" r="6"/>
-        <circle class="stroke-navy" cx="50" cy="14" r="6"/>
-        <circle class="stroke-indigo fill-indigo" cx="14" cy="50" r="6"/>
-        <circle class="stroke-navy" cx="50" cy="50" r="6"/>
-        <path class="stroke-navy" d="M19 18l7 8M45 18l-7 8M19 46l7-8M45 46l-7-8"/>
-        <path class="stroke-indigo" d="M25 32h-6M45 32h-6"/>
-        <path class="stroke-coral" d="M48 28c4-1 6-3 7-7 1 4 3 6 7 7-4 1-6 3-7 7-1-4-3-6-7-7Z"/>
-      </g>
-    </symbol>
-  </svg>
   <div class="shell">
     <header class="topbar">
       <nav class="nav" aria-label="Primary navigation">
@@ -1253,7 +1261,7 @@
               <div class="pathway-rail">
                 <article class="pathway-card">
                   <header>
-                    <span class="concept-icon compact"><svg><use href="#icon-community-needs"></use></svg></span>
+                    <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/community-needs.svg" alt=""></span>
                     <h3>Identify community gaps</h3>
                   </header>
                   <div class="insight-grid" aria-hidden="true">
@@ -1266,7 +1274,7 @@
                 <span class="pathway-arrow" aria-hidden="true"></span>
                 <article class="pathway-card">
                   <header>
-                    <span class="concept-icon compact"><svg><use href="#icon-find-screening"></use></svg></span>
+                    <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/find-screening.svg" alt=""></span>
                     <h3>Connect to screening</h3>
                   </header>
                   <div class="match-card-mini">
@@ -1283,7 +1291,7 @@
               </div>
               <div class="appointment-preview">
                 <article class="preview-card accent">
-                  <span class="concept-icon compact"><svg><use href="#icon-ai-best-match"></use></svg></span>
+                  <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/ai-best-match.svg" alt=""></span>
                   <span class="preview-copy"><strong>AI Best Match</strong>Ranks options by selected date, distance, time, coverage, language, and access needs.</span>
                 </article>
               </div>
@@ -1306,7 +1314,7 @@
               <a class="role-card health" href="#organization">
                 <div class="role-card-top">
                   <span class="tag">Community planning</span>
-                  <span class="concept-icon"><svg><use href="#icon-community-needs"></use></svg></span>
+                  <span class="concept-icon"><img src="assets/icons/ri-screenconnect/community-needs.svg" alt=""></span>
                 </div>
                 <div>
                   <h3>For Health Organizations</h3>
@@ -1317,7 +1325,7 @@
               <a class="role-card patient" href="#navigator">
                 <div class="role-card-top">
                   <span class="tag">Screening access</span>
-                  <span class="concept-icon"><svg><use href="#icon-find-screening"></use></svg></span>
+                  <span class="concept-icon"><img src="assets/icons/ri-screenconnect/find-screening.svg" alt=""></span>
                 </div>
                 <div>
                   <h3>For Patients, Caregivers, and Care Teams</h3>
@@ -1341,6 +1349,20 @@
             <a class="button primary" href="#navigator">Find Screening</a>
           </div>
           <div class="notice"><strong>SyntheticRI contains synthetic, not real, patient records.</strong> This dashboard is for population-level planning and cannot identify or contact actual residents.</div>
+          <div class="feature-strip" aria-label="Community needs dashboard focus areas">
+            <article class="feature-pill">
+              <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/community-needs.svg" alt=""></span>
+              <span><strong>Community patterns</strong>City and ZIP-level views</span>
+            </article>
+            <article class="feature-pill">
+              <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/screening-gap.svg" alt=""></span>
+              <span><strong>Screening gaps</strong>Gap counts and rates</span>
+            </article>
+            <article class="feature-pill">
+              <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/outreach-priority.svg" alt=""></span>
+              <span><strong>Outreach priority</strong>SVI, HEZ, and flu context</span>
+            </article>
+          </div>
           <iframe class="dashboard-frame" src="RI_cancer_screening_dashboard_300k.html?v=community-needs-restore" title="Cancer Screening Gap Explorer" scrolling="yes"></iframe>
         </div>
       </section>
@@ -1363,7 +1385,10 @@
                 <div class="form-grid">
                   <section class="form-section" aria-labelledby="when-where-title">
                     <div class="form-section-head">
-                      <span class="concept-icon compact"><svg><use href="#icon-find-screening"></use></svg></span>
+                      <span class="icon-pair" aria-hidden="true">
+                        <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/location.svg" alt=""></span>
+                        <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/time.svg" alt=""></span>
+                      </span>
                       <h3 id="when-where-title">When and where</h3>
                     </div>
                     <div class="form-section-grid">
@@ -1407,7 +1432,7 @@
 
                   <section class="form-section" aria-labelledby="coverage-title">
                     <div class="form-section-head">
-                      <span class="concept-icon compact"><svg><use href="#icon-ai-best-match"></use></svg></span>
+                      <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/insurance.svg" alt=""></span>
                       <h3 id="coverage-title">Coverage and care requirements</h3>
                     </div>
                     <div class="form-section-grid">
@@ -1434,7 +1459,10 @@
 
                   <section class="form-section" aria-labelledby="access-title">
                     <div class="form-section-head">
-                      <span class="concept-icon compact"><svg><use href="#icon-community-needs"></use></svg></span>
+                      <span class="icon-pair" aria-hidden="true">
+                        <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/language.svg" alt=""></span>
+                        <span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/accessibility.svg" alt=""></span>
+                      </span>
                       <h3 id="access-title">Personal access needs</h3>
                     </div>
                     <fieldset class="field full">
@@ -1471,7 +1499,7 @@
               <p class="notice">Sample appointment availability is shown here. Final booking happens directly with the selected facility.</p>
               <div class="result-list" id="results"></div>
               <aside class="trust-card" aria-label="Privacy and demonstration data note">
-                <span class="concept-icon compact"><svg><use href="#icon-ai-best-match"></use></svg></span>
+                <span class="chip indigo">Synthetic demonstration data</span>
                 <div>
                   <h3>Privacy-conscious by design</h3>
                   <p>No real patient records are used, no personal health information is collected, and appointment information is simulated for demonstration. Final scheduling happens with the selected facility.</p>
@@ -1488,10 +1516,10 @@
           <h1 id="partners-title">A practical pathway from outreach to access.</h1>
           <p class="lede">RI ScreenConnect can help organizations prioritize outreach, make screening options more visible, and reduce scheduling friction after screening has been recommended.</p>
           <div class="role-grid">
-            <article class="role-card"><span class="tag">Health systems</span><h3>Target outreach</h3><p>Use local gap patterns to focus awareness and navigation resources.</p></article>
-            <article class="role-card"><span class="tag">Screening facilities</span><h3>Show availability</h3><p>Make appointment options easier for patients and care teams to compare.</p></article>
-            <article class="role-card"><span class="tag">Public health</span><h3>Coordinate campaigns</h3><p>Combine community context with access pathways.</p></article>
-            <article class="role-card"><span class="tag">Payers</span><h3>Support completion</h3><p>Connect preventive-care outreach with practical appointment navigation.</p></article>
+            <article class="role-card"><div class="role-card-top"><span class="tag">Health systems</span><span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/outreach-priority.svg" alt=""></span></div><h3>Target outreach</h3><p>Use local gap patterns to focus awareness and navigation resources.</p></article>
+            <article class="role-card"><div class="role-card-top"><span class="tag">Screening facilities</span><span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/find-screening.svg" alt=""></span></div><h3>Show availability</h3><p>Make appointment options easier for patients and care teams to compare.</p></article>
+            <article class="role-card"><div class="role-card-top"><span class="tag">Public health</span><span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/community-needs.svg" alt=""></span></div><h3>Coordinate campaigns</h3><p>Combine community context with access pathways.</p></article>
+            <article class="role-card"><div class="role-card-top"><span class="tag">Payers</span><span class="concept-icon compact"><img src="assets/icons/ri-screenconnect/screening-gap.svg" alt=""></span></div><h3>Support completion</h3><p>Connect preventive-care outreach with practical appointment navigation.</p></article>
           </div>
         </div>
       </section>
@@ -1677,15 +1705,15 @@
                 <span>${facility.city}, RI ${facility.zip}</span>
               </div>
             </div>
-            ${index === 0 ? '<span class="badge"><span class="concept-icon inline"><svg><use href="#icon-ai-best-match"></use></svg></span>AI Best Match</span>' : ''}
+            ${index === 0 ? '<span class="badge"><span class="concept-icon inline"><img src="assets/icons/ri-screenconnect/ai-best-match.svg" alt=""></span>AI Best Match</span>' : ''}
           </div>
           ${index === 0 ? `<p class="notice">${bestMatchSummary(facility, values)}</p>` : ''}
           <div class="result-chip-grid">
-            <span class="chip teal">${facility.date} · ${facility.time}</span>
-            <span class="chip indigo">${facility.distance} miles</span>
-            <span class="chip">${facility.insurance.join(', ')}</span>
-            <span class="chip">${facility.languages.join(', ')}</span>
-            <span class="chip">${facility.access.join(', ')}</span>
+            <span class="chip teal"><span class="concept-icon meta"><img src="assets/icons/ri-screenconnect/time.svg" alt=""></span>${facility.date} · ${facility.time}</span>
+            <span class="chip indigo"><span class="concept-icon meta"><img src="assets/icons/ri-screenconnect/location.svg" alt=""></span>${facility.distance} miles</span>
+            <span class="chip"><span class="concept-icon meta"><img src="assets/icons/ri-screenconnect/insurance.svg" alt=""></span>${facility.insurance.join(', ')}</span>
+            <span class="chip"><span class="concept-icon meta"><img src="assets/icons/ri-screenconnect/language.svg" alt=""></span>${facility.languages.join(', ')}</span>
+            <span class="chip"><span class="concept-icon meta"><img src="assets/icons/ri-screenconnect/accessibility.svg" alt=""></span>${facility.access.join(', ')}</span>
           </div>
           <div class="why">
             <strong>Why this is a good match</strong>
