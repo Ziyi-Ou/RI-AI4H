@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RI ScreenConnect</title>
-  <link rel="icon" type="image/png" href="assets/ri-screenconnect-icon-clean.png">
+  <link rel="icon" type="image/png" href="assets/ri-screenconnect-icon.png">
   <style>
     :root {
       --bg: #f3f7f8;
@@ -23,9 +23,21 @@
       --gold: #f6c945;
       --green: #26a978;
       --blue: #058dc7;
+      --indigo: #7b8ce3;
+      --lavender: #eef1ff;
+      --card-border: rgba(213, 225, 232, 0.92);
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,252,253,0.98));
+      --space-1: 6px;
+      --space-2: 10px;
+      --space-3: 14px;
+      --space-4: 18px;
+      --space-5: 24px;
+      --space-6: 32px;
       --shadow: 0 22px 54px rgba(3, 42, 86, 0.14);
       --shadow-soft: 0 10px 26px rgba(3, 42, 86, 0.08);
+      --shadow-card: 0 8px 24px rgba(3, 42, 86, 0.07);
       --radius-lg: 22px;
+      --radius-card: 20px;
       --radius-md: 14px;
       --radius-sm: 10px;
       --max: 1180px;
@@ -281,6 +293,15 @@
       box-shadow: var(--shadow-soft);
     }
 
+    .button.tertiary {
+      min-height: 40px;
+      padding: 0 12px;
+      background: transparent;
+      color: var(--teal-dark);
+      border-color: transparent;
+      box-shadow: none;
+    }
+
     .hero-visual {
       border: 1px solid rgba(213, 225, 232, 0.95);
       border-radius: 32px;
@@ -291,7 +312,7 @@
       padding: 24px;
       min-height: 520px;
       display: grid;
-      gap: 14px;
+      gap: var(--space-4);
       align-content: center;
       position: relative;
       overflow: hidden;
@@ -325,6 +346,134 @@
       background: #ffffff;
       box-shadow: 0 16px 38px rgba(3, 42, 86, 0.10);
       overflow: hidden;
+    }
+
+    .pathway-rail {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .pathway-card {
+      min-height: 176px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      background: var(--card-bg);
+      padding: 16px;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .pathway-card header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pathway-card h3 {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .pathway-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .pathway-arrow {
+      width: 44px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--teal), var(--indigo));
+      position: relative;
+    }
+
+    .pathway-arrow::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: 50%;
+      width: 9px;
+      height: 9px;
+      border-top: 2px solid var(--indigo);
+      border-right: 2px solid var(--indigo);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .insight-grid span {
+      min-height: 28px;
+      border-radius: 9px;
+      border: 1px solid rgba(3, 42, 86, 0.05);
+      background: #dff5f7;
+    }
+
+    .insight-grid .hot { background: rgba(255, 97, 87, 0.78); }
+    .insight-grid .warm { background: rgba(246, 201, 69, 0.72); }
+    .insight-grid .cool { background: rgba(15, 145, 158, 0.22); }
+
+    .match-card-mini {
+      border: 1px solid #dfe9ee;
+      border-radius: 16px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .match-card-mini strong {
+      display: block;
+      color: var(--primary);
+      font-size: 15px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 28px;
+      border-radius: 999px;
+      padding: 0 9px;
+      border: 1px solid #dce8ee;
+      background: #f8fbfc;
+      color: #40576a;
+      font-size: 12px;
+      font-weight: 820;
+      white-space: nowrap;
+    }
+
+    .chip.teal {
+      border-color: rgba(15, 145, 158, 0.24);
+      background: var(--teal-soft);
+      color: var(--teal-dark);
+    }
+
+    .chip.indigo {
+      border-color: rgba(123, 140, 227, 0.24);
+      background: var(--lavender);
+      color: #4b5fc2;
+    }
+
+    .chip.coral {
+      border-color: rgba(255, 97, 87, 0.22);
+      background: rgba(255, 97, 87, 0.10);
+      color: var(--coral-dark);
     }
 
     .concept-icon {
@@ -572,22 +721,20 @@
     .role-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 20px;
       margin-top: 28px;
     }
 
     .role-card {
-      min-height: 220px;
+      min-height: 300px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border: 1px solid rgba(213, 225, 232, 0.98);
-      border-radius: var(--radius-lg);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,252,253,0.98)),
-        var(--surface);
-      padding: 24px;
-      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      background: var(--card-bg);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
       text-decoration: none;
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       position: relative;
@@ -643,10 +790,10 @@
       margin-bottom: 20px;
     }
 
-    .role-card.health { grid-column: 1 / -1; min-height: 190px; }
     .role-card.health {
       background:
-        linear-gradient(90deg, rgba(223, 245, 247, 0.96), rgba(255, 255, 255, 0.98)),
+        radial-gradient(circle at 92% 16%, rgba(15,145,158,0.12), transparent 34%),
+        linear-gradient(180deg, rgba(241,250,251,0.98), rgba(255, 255, 255, 0.98)),
         #fff;
     }
 
@@ -655,7 +802,7 @@
     }
 
     .role-card.provider::after {
-      background: linear-gradient(135deg, rgba(246,201,69,0.26), rgba(3,42,86,0.10));
+      background: linear-gradient(135deg, rgba(123,140,227,0.22), rgba(3,42,86,0.10));
     }
 
     .role-card h3,
@@ -725,10 +872,10 @@
 
     .panel {
       border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: #fff;
-      box-shadow: var(--shadow-soft);
-      padding: 22px;
+      border-radius: var(--radius-card);
+      background: var(--surface);
+      box-shadow: var(--shadow-card);
+      padding: 24px;
     }
 
     .panel.search-panel {
@@ -738,6 +885,34 @@
     }
 
     .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .form-section {
+      grid-column: 1 / -1;
+      border: 1px solid #e0ebef;
+      border-radius: 18px;
+      background: rgba(248, 252, 253, 0.78);
+      padding: 16px;
+    }
+
+    .form-section + .form-section { margin-top: 2px; }
+
+    .form-section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .form-section-head h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .form-section-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
@@ -809,11 +984,11 @@
 
     .result-list { display: grid; gap: 12px; }
     .appointment-card {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: #fff;
-      padding: 18px;
-      box-shadow: 0 4px 14px rgba(19, 35, 47, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      background: var(--surface);
+      padding: 20px;
+      box-shadow: var(--shadow-card);
       transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
     }
 
@@ -826,6 +1001,16 @@
       border-color: rgba(15, 145, 158, 0.34);
       background: linear-gradient(180deg, #f5fbfc, #fff);
     }
+
+    .appointment-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .appointment-card h3 { margin: 0; }
 
     .badge {
       display: inline-flex;
@@ -847,6 +1032,13 @@
       color: var(--muted);
       font-size: 14px;
       margin: 6px 0 12px;
+    }
+
+    .result-chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
     }
 
     .slots { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
@@ -871,6 +1063,32 @@
 
     .why strong { color: var(--primary); }
     .why ul { margin: 8px 0 0; padding-left: 20px; }
+
+    .trust-card {
+      margin-top: 22px;
+      border: 1px solid rgba(123, 140, 227, 0.20);
+      border-radius: var(--radius-card);
+      background:
+        radial-gradient(circle at 92% 20%, rgba(123,140,227,0.11), transparent 26%),
+        linear-gradient(180deg, #ffffff, #f9fbff);
+      box-shadow: var(--shadow-card);
+      padding: 20px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .trust-card h3 {
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+
+    .trust-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
     .footer {
       border-top: 1px solid var(--line);
@@ -916,6 +1134,20 @@
       .hero, .navigator-shell, .part-header { grid-template-columns: 1fr; }
       .hero { min-height: auto; }
       .console-body { grid-template-columns: 1fr; }
+      .pathway-rail { grid-template-columns: 1fr; }
+      .pathway-arrow {
+        width: 2px;
+        height: 34px;
+        justify-self: center;
+        background: linear-gradient(180deg, var(--teal), var(--indigo));
+      }
+      .pathway-arrow::after {
+        right: auto;
+        top: auto;
+        bottom: -1px;
+        left: 50%;
+        transform: translateX(-50%) rotate(135deg);
+      }
       .role-grid, .quick-strip { grid-template-columns: 1fr; }
       .role-card.health { grid-column: auto; }
       .dashboard-frame { height: 78vh; min-height: 640px; }
@@ -926,8 +1158,11 @@
       .nav-links { justify-content: flex-start; }
       .container { padding: 24px 16px 44px; }
       .hero-visual { min-height: 420px; }
-      .form-grid { grid-template-columns: 1fr; }
+      .form-grid, .form-section-grid { grid-template-columns: 1fr; }
       .section-head { align-items: start; flex-direction: column; }
+      .brand-wordmark { height: 18px; }
+      .brand-system::after { display: none; }
+      .appointment-top { flex-direction: column; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -981,7 +1216,7 @@
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="#home" data-nav="home" aria-label="RI ScreenConnect home">
           <span class="brand-system">
-            <span class="brand-mark"><img src="assets/ri-screenconnect-icon-clean.png" alt=""></span>
+            <span class="brand-mark"><img src="assets/ri-screenconnect-icon.png" alt=""></span>
             <img class="brand-wordmark" src="assets/ri-screenconnect-title.png" alt="RI ScreenConnect">
           </span>
         </a>
@@ -999,7 +1234,7 @@
           <div class="hero">
             <div>
               <div class="brand-lockup" aria-label="RI ScreenConnect">
-                <img src="assets/ri-screenconnect-icon-clean.png" alt="">
+                <img src="assets/ri-screenconnect-icon.png" alt="">
                 <img src="assets/ri-screenconnect-title.png" alt="RI ScreenConnect">
               </div>
               <h1>From screening insight to easier access to care.</h1>
@@ -1015,38 +1250,47 @@
               </div>
             </div>
             <div class="hero-visual" aria-label="Screening support workflow">
-              <div class="product-console">
-                <div class="console-top">
-                  <span>Screening access workspace</span>
-                  <span class="console-status">Ready to explore</span>
-                </div>
-                <div class="console-body">
-                  <div class="map-tile" aria-hidden="true">
-                    <div class="map-row"><span class="mini-cell cool"></span><span class="mini-cell warn"></span><span class="mini-cell hot"></span></div>
-                    <div class="map-row"><span class="mini-cell warn"></span><span class="mini-cell deep"></span><span class="mini-cell cool"></span></div>
-                    <div class="map-row"><span class="mini-cell cool"></span><span class="mini-cell hot"></span><span class="mini-cell warn"></span></div>
-                    <div class="map-row"><span class="mini-cell hot"></span><span class="mini-cell cool"></span><span class="mini-cell warn"></span></div>
+              <div class="pathway-rail">
+                <article class="pathway-card">
+                  <header>
+                    <span class="concept-icon compact"><svg><use href="#icon-community-needs"></use></svg></span>
+                    <h3>Identify community gaps</h3>
+                  </header>
+                  <div class="insight-grid" aria-hidden="true">
+                    <span class="cool"></span><span class="warm"></span><span class="hot"></span><span class="cool"></span>
+                    <span class="warm"></span><span class="hot"></span><span class="cool"></span><span class="warm"></span>
+                    <span class="cool"></span><span class="warm"></span><span class="hot"></span><span class="cool"></span>
                   </div>
-                  <div class="appointment-preview">
-                    <article class="preview-card accent">
-                      <span class="concept-icon compact"><svg><use href="#icon-community-needs"></use></svg></span>
-                      <span class="preview-copy"><strong>Community needs surfaced</strong>Gap, SVI, HEZ, and flu-shot context in one planning dashboard</span>
-                    </article>
-                    <article class="preview-card">
-                      <span class="concept-icon compact"><svg><use href="#icon-ai-best-match"></use></svg></span>
-                      <span class="preview-copy"><strong>Convenient options ranked</strong>Facility availability filtered by date, distance, language, insurance, and access needs</span>
-                    </article>
-                    <article class="preview-card">
-                      <span class="concept-icon compact"><svg><use href="#icon-find-screening"></use></svg></span>
-                      <span class="preview-copy"><strong>Patients stay in control</strong>Final booking and personal information stay with the selected facility</span>
-                    </article>
+                  <p>Community-level screening patterns and local context help focus outreach.</p>
+                </article>
+                <span class="pathway-arrow" aria-hidden="true"></span>
+                <article class="pathway-card">
+                  <header>
+                    <span class="concept-icon compact"><svg><use href="#icon-find-screening"></use></svg></span>
+                    <h3>Connect to screening</h3>
+                  </header>
+                  <div class="match-card-mini">
+                    <strong>Cranston Screening Options</strong>
+                    <div class="chip-row" aria-label="Example appointment match details">
+                      <span class="chip teal">Aug 2</span>
+                      <span class="chip indigo">5 miles</span>
+                      <span class="chip">Spanish</span>
+                      <span class="chip">Medicaid</span>
+                    </div>
                   </div>
-                </div>
+                  <p>Patients and care teams compare practical options after screening is recommended.</p>
+                </article>
+              </div>
+              <div class="appointment-preview">
+                <article class="preview-card accent">
+                  <span class="concept-icon compact"><svg><use href="#icon-ai-best-match"></use></svg></span>
+                  <span class="preview-copy"><strong>AI Best Match</strong>Ranks options by selected date, distance, time, coverage, language, and access needs.</span>
+                </article>
               </div>
               <div class="quick-strip" aria-hidden="true">
-                <div class="quick-stat"><strong>121k</strong><span>Eligible rows</span></div>
-                <div class="quick-stat"><strong>5</strong><span>Cancer types</span></div>
-                <div class="quick-stat"><strong>RI</strong><span>Local focus</span></div>
+                <div class="quick-stat"><strong>Identify</strong><span>Gaps</span></div>
+                <div class="quick-stat"><strong>Prioritize</strong><span>Outreach</span></div>
+                <div class="quick-stat"><strong>Connect</strong><span>Care</span></div>
               </div>
             </div>
           </div>
@@ -1061,36 +1305,25 @@
             <div class="role-grid">
               <a class="role-card health" href="#organization">
                 <div class="role-card-top">
-                  <span class="tag">Population health</span>
+                  <span class="tag">Community planning</span>
                   <span class="concept-icon"><svg><use href="#icon-community-needs"></use></svg></span>
                 </div>
                 <div>
-                  <h3>Explore Community Needs</h3>
-                  <p>Use the existing Rhode Island screening-gap dashboard to compare geographic need and community context.</p>
+                  <h3>For Health Organizations</h3>
+                  <p>Identify where screening outreach is needed most and understand the local context behind screening gaps.</p>
                 </div>
-                <span class="button secondary">Open dashboard</span>
+                <span class="button secondary">Explore community needs</span>
               </a>
               <a class="role-card patient" href="#navigator">
                 <div class="role-card-top">
-                  <span class="tag">Patient or caregiver</span>
+                  <span class="tag">Screening access</span>
                   <span class="concept-icon"><svg><use href="#icon-find-screening"></use></svg></span>
                 </div>
                 <div>
-                  <h3>Find Screening</h3>
-                  <p>Search participating facilities by screening type, ZIP code, preferred time, insurance, language, and accessibility needs.</p>
+                  <h3>For Patients, Caregivers, and Care Teams</h3>
+                  <p>Find screening options that fit practical needs such as location, timing, language, insurance, and accessibility.</p>
                 </div>
-                <span class="button secondary">Search appointments</span>
-              </a>
-              <a class="role-card provider" href="#navigator">
-                <div class="role-card-top">
-                  <span class="tag">Care team</span>
-                  <span class="concept-icon"><svg><use href="#icon-ai-best-match"></use></svg></span>
-                </div>
-                <div>
-                  <h3>Support a Patient</h3>
-                  <p>Quickly compare patient-friendly appointment options using the same simulated availability data.</p>
-                </div>
-                <span class="button secondary">Compare options</span>
+                <span class="button secondary">Find screening options</span>
               </a>
             </div>
           </section>
@@ -1128,76 +1361,100 @@
               <h2 id="search-title">Screening appointment preferences</h2>
               <form id="appointment-form">
                 <div class="form-grid">
-                  <div class="field full">
-                    <label for="screening-type">Screening type</label>
-                    <select id="screening-type" name="screeningType">
-                      <option>Mammography</option>
-                      <option>Cervical cancer screening</option>
-                      <option>Colorectal screening consultation</option>
-                      <option>Low-dose CT for lung cancer</option>
-                    </select>
-                  </div>
-                  <div class="field">
-                    <label for="zip">ZIP code</label>
-                    <input id="zip" name="zip" value="02908" inputmode="numeric">
-                  </div>
-                  <div class="field">
-                    <label for="date">Preferred date</label>
-                    <input id="date" name="date" type="date" value="2026-08-02" min="2026-07-22" max="2026-08-21">
-                  </div>
-                  <div class="field">
-                    <label for="time">Preferred time</label>
-                    <select id="time" name="time">
-                      <option>Afternoon</option>
-                      <option>Morning</option>
-                      <option>Evening</option>
-                      <option>Any time</option>
-                    </select>
-                  </div>
-                  <div class="field">
-                    <label for="insurance">Insurance</label>
-                    <select id="insurance" name="insurance">
-                      <option>Medicaid</option>
-                      <option>Medicare</option>
-                      <option>Commercial</option>
-                      <option>Uninsured self-pay</option>
-                      <option>Not sure</option>
-                    </select>
-                  </div>
-                  <div class="field">
-                    <label for="distance">Maximum distance</label>
-                    <select id="distance" name="distance">
-                      <option value="10">Within 10 miles</option>
-                      <option value="5">Within 5 miles</option>
-                      <option value="25">Within 25 miles</option>
-                      <option value="999">Any distance</option>
-                    </select>
-                  </div>
-                  <div class="field">
-                    <label for="referral">Referral</label>
-                    <select id="referral" name="referral">
-                      <option>I have a referral</option>
-                      <option>I may need a referral</option>
-                      <option>Not sure</option>
-                    </select>
-                  </div>
-                  <fieldset class="field full">
-                    <legend>Preferred languages</legend>
-                    <div class="checks">
-                      <label class="check"><input type="checkbox" name="language" value="English" checked> English</label>
-                      <label class="check"><input type="checkbox" name="language" value="Spanish" checked> Spanish</label>
-                      <label class="check"><input type="checkbox" name="language" value="Portuguese"> Portuguese</label>
-                      <label class="check"><input type="checkbox" name="language" value="No preference"> No preference</label>
+                  <section class="form-section" aria-labelledby="when-where-title">
+                    <div class="form-section-head">
+                      <span class="concept-icon compact"><svg><use href="#icon-find-screening"></use></svg></span>
+                      <h3 id="when-where-title">When and where</h3>
                     </div>
-                  </fieldset>
-                  <fieldset class="field full">
-                    <legend>Access needs</legend>
-                    <div class="checks">
-                      <label class="check"><input type="checkbox" name="access" value="Wheelchair access" checked> Wheelchair access</label>
-                      <label class="check"><input type="checkbox" name="access" value="Accessible parking"> Accessible parking</label>
-                      <label class="check"><input type="checkbox" name="access" value="Public transit nearby"> Public transit nearby</label>
+                    <div class="form-section-grid">
+                      <div class="field full">
+                        <label for="screening-type">Screening type</label>
+                        <select id="screening-type" name="screeningType">
+                          <option>Mammography</option>
+                          <option>Cervical cancer screening</option>
+                          <option>Colorectal screening consultation</option>
+                          <option>Low-dose CT for lung cancer</option>
+                        </select>
+                      </div>
+                      <div class="field">
+                        <label for="zip">ZIP code</label>
+                        <input id="zip" name="zip" value="02908" inputmode="numeric">
+                      </div>
+                      <div class="field">
+                        <label for="date">Preferred date</label>
+                        <input id="date" name="date" type="date" value="2026-08-02" min="2026-07-22" max="2026-08-21">
+                      </div>
+                      <div class="field">
+                        <label for="time">Preferred time</label>
+                        <select id="time" name="time">
+                          <option>Afternoon</option>
+                          <option>Morning</option>
+                          <option>Evening</option>
+                          <option>Any time</option>
+                        </select>
+                      </div>
+                      <div class="field">
+                        <label for="distance">Maximum distance</label>
+                        <select id="distance" name="distance">
+                          <option value="10">Within 10 miles</option>
+                          <option value="5">Within 5 miles</option>
+                          <option value="25">Within 25 miles</option>
+                          <option value="999">Any distance</option>
+                        </select>
+                      </div>
                     </div>
-                  </fieldset>
+                  </section>
+
+                  <section class="form-section" aria-labelledby="coverage-title">
+                    <div class="form-section-head">
+                      <span class="concept-icon compact"><svg><use href="#icon-ai-best-match"></use></svg></span>
+                      <h3 id="coverage-title">Coverage and care requirements</h3>
+                    </div>
+                    <div class="form-section-grid">
+                      <div class="field">
+                        <label for="insurance">Insurance</label>
+                        <select id="insurance" name="insurance">
+                          <option>Medicaid</option>
+                          <option>Medicare</option>
+                          <option>Commercial</option>
+                          <option>Uninsured self-pay</option>
+                          <option>Not sure</option>
+                        </select>
+                      </div>
+                      <div class="field">
+                        <label for="referral">Referral</label>
+                        <select id="referral" name="referral">
+                          <option>I have a referral</option>
+                          <option>I may need a referral</option>
+                          <option>Not sure</option>
+                        </select>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="form-section" aria-labelledby="access-title">
+                    <div class="form-section-head">
+                      <span class="concept-icon compact"><svg><use href="#icon-community-needs"></use></svg></span>
+                      <h3 id="access-title">Personal access needs</h3>
+                    </div>
+                    <fieldset class="field full">
+                      <legend>Preferred languages</legend>
+                      <div class="checks">
+                        <label class="check"><input type="checkbox" name="language" value="English" checked> English</label>
+                        <label class="check"><input type="checkbox" name="language" value="Spanish" checked> Spanish</label>
+                        <label class="check"><input type="checkbox" name="language" value="Portuguese"> Portuguese</label>
+                        <label class="check"><input type="checkbox" name="language" value="No preference"> No preference</label>
+                      </div>
+                    </fieldset>
+                    <fieldset class="field full" style="margin-top:12px">
+                      <legend>Access needs</legend>
+                      <div class="checks">
+                        <label class="check"><input type="checkbox" name="access" value="Wheelchair access" checked> Wheelchair access</label>
+                        <label class="check"><input type="checkbox" name="access" value="Accessible parking"> Accessible parking</label>
+                        <label class="check"><input type="checkbox" name="access" value="Public transit nearby"> Public transit nearby</label>
+                      </div>
+                    </fieldset>
+                  </section>
                 </div>
                 <div class="actions" style="margin-top:16px">
                   <button class="button primary" type="submit">Find screening options</button>
@@ -1213,6 +1470,13 @@
               </div>
               <p class="notice">Sample appointment availability is shown here. Final booking happens directly with the selected facility.</p>
               <div class="result-list" id="results"></div>
+              <aside class="trust-card" aria-label="Privacy and demonstration data note">
+                <span class="concept-icon compact"><svg><use href="#icon-ai-best-match"></use></svg></span>
+                <div>
+                  <h3>Privacy-conscious by design</h3>
+                  <p>No real patient records are used, no personal health information is collected, and appointment information is simulated for demonstration. Final scheduling happens with the selected facility.</p>
+                </div>
+              </aside>
             </section>
           </div>
         </div>
@@ -1386,6 +1650,16 @@
       return output;
     }
 
+    function bestMatchSummary(facility, values) {
+      const pieces = [];
+      if (facility.period === values.time || values.time === 'Any time') pieces.push(values.time.toLowerCase());
+      if (facility.distance <= values.distance) pieces.push('nearby');
+      if (facility.insurance.includes(values.insurance) || values.insurance === 'Not sure') pieces.push('coverage-aligned');
+      if (values.languages.length && values.languages.some((language) => facility.languages.includes(language))) pieces.push('language-supported');
+      if (values.access.length && values.access.some((need) => facility.access.includes(need))) pieces.push('access-friendly');
+      return `Best ranked option based on ${pieces.slice(0, 4).join(', ') || 'your selected preferences'}.`;
+    }
+
     function renderResults() {
       const values = formValues();
       const matches = facilities
@@ -1395,18 +1669,23 @@
       document.getElementById('result-count').textContent = `${matches.length} option${matches.length === 1 ? '' : 's'}`;
       document.getElementById('results').innerHTML = matches.map(({ facility }, index) => `
         <article class="appointment-card ${index === 0 ? 'best' : ''}">
-          ${index === 0 ? '<span class="badge"><span class="concept-icon inline"><svg><use href="#icon-ai-best-match"></use></svg></span>AI-assisted Best Match</span>' : ''}
-          <h3>${facility.name}</h3>
-          <div class="meta">
-            <span>${values.screeningType}</span>
-            <span>${facility.city}, RI ${facility.zip}</span>
-            <span>${facility.distance} miles</span>
-            <span>${facility.date} at ${facility.time}</span>
+          <div class="appointment-top">
+            <div>
+              <h3>${facility.name}</h3>
+              <div class="meta">
+                <span>${values.screeningType}</span>
+                <span>${facility.city}, RI ${facility.zip}</span>
+              </div>
+            </div>
+            ${index === 0 ? '<span class="badge"><span class="concept-icon inline"><svg><use href="#icon-ai-best-match"></use></svg></span>AI Best Match</span>' : ''}
           </div>
-          <div class="meta">
-            <span>${facility.insurance.join(', ')}</span>
-            <span>${facility.languages.join(', ')}</span>
-            <span>${facility.access.join(', ')}</span>
+          ${index === 0 ? `<p class="notice">${bestMatchSummary(facility, values)}</p>` : ''}
+          <div class="result-chip-grid">
+            <span class="chip teal">${facility.date} · ${facility.time}</span>
+            <span class="chip indigo">${facility.distance} miles</span>
+            <span class="chip">${facility.insurance.join(', ')}</span>
+            <span class="chip">${facility.languages.join(', ')}</span>
+            <span class="chip">${facility.access.join(', ')}</span>
           </div>
           <div class="why">
             <strong>Why this is a good match</strong>
